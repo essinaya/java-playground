@@ -3,8 +3,29 @@ package oop.inheritance;
 public class AirbusA320 extends Airplane {
 	private boolean flyByWireEnabled;
     private double maxRangeKm;
+    
+    public AirbusA320() {
+    	System.out.print("☆☆✈✈ Constructor of AirbusA320 loaded.");
+    }
+    
 
-    public void activateFlyByWire() {
+    public boolean isFlyByWireEnabled() {
+		return flyByWireEnabled;
+	}
+
+	public void setFlyByWireEnabled(boolean flyByWireEnabled) {
+		this.flyByWireEnabled = flyByWireEnabled;
+	}
+
+	public double getMaxRangeKm() {
+		return maxRangeKm;
+	}
+
+	public void setMaxRangeKm(double maxRangeKm) {
+		this.maxRangeKm = maxRangeKm;
+	}
+
+	public void activateFlyByWire() {
         if (flyByWireEnabled) {
             System.out.println("Fly-by-wire system activated.");
         } else {

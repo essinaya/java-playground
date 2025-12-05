@@ -6,11 +6,11 @@ public class Audi extends Car {
 	
 	
 	public Audi() {
-		System.out.println("Audi constructor executed.");
+		System.out.println("⠀⃝ ⠀⃝ ⠀⃝ ⠀⃝ㅤ Audi constructor executed.");
 	}
 	
 	public Audi(boolean hvc, boolean qs) {
-		System.out.println("Audi constructor with params executed.");
+		System.out.println("⠀⃝ ⠀⃝ ⠀⃝ ⠀⃝ㅤ Audi constructor with params executed.");
 		this.hasVirtualCockpit = hvc;
 		this.quattroSystem = qs;
 	}

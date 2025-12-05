@@ -2,11 +2,32 @@ package oop.inheritance;
 
 public class BMW extends Car {
 	
-	//TODO: CREATE CONSTRUCTORS FOR BMW, MERCEDES, AIRPLANE, BOEING737, AND AIRBUSA320
 	private boolean adaptiveCruiseControl;
     private boolean sportMode;
+    
+    
+    public BMW() {
+    	System.out.print("☢☢ BMW constructor loaded");
+    }
+    
 
-    public void activateSportMode() {
+    public boolean isAdaptiveCruiseControl() {
+		return adaptiveCruiseControl;
+	}
+
+	public void setAdaptiveCruiseControl(boolean adaptiveCruiseControl) {
+		this.adaptiveCruiseControl = adaptiveCruiseControl;
+	}
+
+	public boolean isSportMode() {
+		return sportMode;
+	}
+
+	public void setSportMode(boolean sportMode) {
+		this.sportMode = sportMode;
+	}
+
+	public void activateSportMode() {
         sportMode = true;
         System.out.println("Sport mode activated. Enjoy sharper handling!");
     }

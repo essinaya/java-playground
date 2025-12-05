@@ -7,11 +7,11 @@ public class Car extends Vehicle {
     private int numberOfDoors;
     
     public Car() {
-    	System.out.println("Car constructor executed.");
+    	System.out.println("⛍⛍ Car constructor executed.");
     }
     
     public Car(double trunkSize, String brand, int numberOfDoors) {
-    	System.out.println("Car constructor with parameters executed.");
+    	System.out.println("⛍⛍ Car constructor with parameters executed.");
     	this.trunkSize = trunkSize;
     	this.brand = brand;
     	this.numberOfDoors = numberOfDoors;
