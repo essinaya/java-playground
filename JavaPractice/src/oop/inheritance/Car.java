@@ -38,8 +38,9 @@ public class Car extends Vehicle {
 	}
 
 	public void setNumberOfDoors(int numberOfDoors) throws Exception {
-		if (numberOfDoors == 1) {
-			throw new Exception("Number of doors must be greater than 1");
+		System.out.println("⛍⛍ Car setNumberOfDoors executed.");
+		if (numberOfDoors < 2) {
+			throw new Exception("Number of doors must be alteast 2");
 		}
 		this.numberOfDoors = numberOfDoors;
 	}
