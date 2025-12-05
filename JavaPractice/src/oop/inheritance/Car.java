@@ -37,7 +37,10 @@ public class Car extends Vehicle {
 		return numberOfDoors;
 	}
 
-	public void setNumberOfDoors(int numberOfDoors) {
+	public void setNumberOfDoors(int numberOfDoors) throws Exception {
+		if (numberOfDoors == 1) {
+			throw new Exception("Number of doors must be greater than 1");
+		}
 		this.numberOfDoors = numberOfDoors;
 	}
 

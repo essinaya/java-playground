@@ -6,6 +6,7 @@ public class Vehicle {
 	private int capacity;
 	private double fuelLevel;
 	private double weight;
+	private String name;
 	
 	public Vehicle() {
 		System.out.println("✇✇ Vehicle constructor executed.");
@@ -45,6 +46,14 @@ public class Vehicle {
 		this.weight = weight;
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String start() {
 		return "✇✇ Vehicle is starting!";
 	}

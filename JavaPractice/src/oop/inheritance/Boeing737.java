@@ -8,6 +8,17 @@ public class Boeing737 extends Airplane {
     	System.out.print("☆✈✈Constructor of Boeing737 loaded.");
     }
     
+    public Boeing737(String et, int pc,String airlineName, String name,
+    				 double wingspan, double altitude) {
+    	System.out.print("☆✈✈Constructor of Boeing737 with parameters loaded.");
+    	this.engineType = et;
+    	this.passengerCount = pc;
+    	this.setAirline(airlineName);
+    	this.setName(name);
+    	this.setWingspan(wingspan);
+    	this.setAltitude(altitude);
+    }
+    
     public String getEngineType() {
 		return engineType;
 	}

@@ -8,6 +8,17 @@ public class Mercedes extends Car {
     	System.out.println("㉦㉦ Mercedes constructor executed.");
     }
     
+    public Mercedes(double trunkSize, String brand, int numOfDoors,
+    				String alc, boolean ape, String name) throws Exception {
+    	System.out.println("㉦㉦ Mercedes constructor with params executed.");
+    	this.setTrunkSize(trunkSize);
+    	this.setBrand(brand);
+    	this.setNumberOfDoors(numOfDoors);
+    	this.ambientLightingColor = alc;
+    	this.autoPilotEnabled = ape;
+    	this.setName(name);
+    }
+    
 
     public String getAmbientLightingColor() {
 		return ambientLightingColor;

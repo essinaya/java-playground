@@ -7,7 +7,18 @@ public class BMW extends Car {
     
     
     public BMW() {
-    	System.out.print("☢☢ BMW constructor loaded");
+    	System.out.print("☢☢ BMW constructor executed");
+    }
+    
+    public BMW(boolean acc, boolean sm, String name,
+    		   double trunkSize, String brand, int numOfDoors) throws Exception {
+    	System.out.print("☢☢ BMW constructor with parameters executed");
+    	this.adaptiveCruiseControl = acc;
+    	this.sportMode = sm;
+    	this.setName(name);
+    	this.setTrunkSize(trunkSize);
+    	this.setBrand(brand);
+    	this.setNumberOfDoors(numOfDoors);
     }
     
 
