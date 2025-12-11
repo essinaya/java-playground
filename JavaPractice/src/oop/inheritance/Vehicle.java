@@ -73,7 +73,7 @@ public class Vehicle {
 	
 	public void brake(double amount) {
         speed = Math.max(0, speed - amount);
-        System.out.println("✇✇ Braking by " + df.format(amount) + " km/h. Current speed: " + df.format(amount));
+        System.out.println("✇✇ Braking by " + df.format(amount) + " km/h. Current speed: " + df.format(speed));
     }
 	
 	public void refuel(double liters) {

@@ -7,9 +7,11 @@ import java.util.Scanner;
 
 public class InheritanceMain {
 	static Scanner sc = new Scanner(System.in);
+	
 
 	public static void main(String[] args) throws Exception {
 		Vehicle vc = new Vehicle();
+		Random rand = new Random();
 		
 		introduction();
 		System.out.println("➤➤ Facility Control Scanning available vehicles...");
@@ -25,8 +27,43 @@ public class InheritanceMain {
 		vc = listVehiclesAndReturnVehicle(fleet, testingGrounds);
 		System.out.println("You chose "+vc.getName());
 		warmUp(vc);
+		specializedPerfTest(vc);
+		if(rand.nextBoolean()) {
+			randomMachineChallenge(vc);
+		}
 		
 		
+		
+		//TODO
+//		3. SPECIALISED PERFORMANCE TEST (Subclass Behaviour)
+//		if v is Car      -> openTrunk(), playMusic()
+//		if v is Airplane -> takeOff(), deployLandingGear()
+//
+//		Brand-specific:
+//		if v is Audi       -> enableQuattro()
+//		if v is BMW        -> activateSportMode()
+//		if v is Mercedes   -> changeAmbientLighting()
+//		if v is Airbus     -> activateFlyByWire()
+//		if v is Boeing     -> deployFlaps()
+//
+//		TODO
+		//Be specific on the random machine challenge
+//		4. RANDOM MACHINE CHALLENGE
+//		Vehicle v = fleet.getRandom()
+//		v.start()
+//
+//		(dynamic binding resolves actual subclass at runtime)
+//		v executes subclass behaviour depending on its real type
+//
+//
+//		5. EMERGENCY PROTOCOL
+//		Vehicle.stop()
+//
+//		Subclass responses:
+//		Car      -> hazardLights()
+//		Airplane -> retractLandingGear()
+//		BMW      -> disableSportMode()
+//		Boeing   -> retractFlaps()
 		
 		sc.close();
 	}
@@ -36,26 +73,17 @@ public class InheritanceMain {
 		System.out.println("➤➤ Your one-stop shop for testing vehicles!");
 	}
 	
+	//TODO put in a util class
 	public static List<Vehicle> facilityControl(List<Vehicle> vehicleList) throws Exception{
 		//treating everything as Vehicle
 		//every subclass IS-A Vehicle
 		//here, we demonstrate Polymorphism as well! :D
 		Random rand = new Random();
-		System.out.println("➤➤ Adding new Audi");
 		vehicleList.add(new Audi(true, false, "Audi R8", rand.nextDouble(2.5, 5.0), "Audi", 2));
-		System.out.println("");
-		System.out.println("➤➤ Adding new BMW");
 		vehicleList.add(new BMW(true, false, "2025 BMW X4", rand.nextDouble(2.5, 5.0), "BMW", 2));
-		System.out.println("");
-		System.out.println("➤➤ Adding new Mercedes");
 		vehicleList.add(new Mercedes(rand.nextDouble(2.5, 5.0), "Mercedes", 4, "Green", true, "E 200 AMG Line"));
-		System.out.println("");
-		System.out.println("➤➤ Adding new AirbusA320");
 		vehicleList.add(new AirbusA320(true, rand.nextDouble(100.0, 200.0), "Philippine Airlines", "A321XLR", rand.nextDouble(),rand.nextInt()));
-		System.out.println("");
-		System.out.println("➤➤ Adding new Boeing737");
 		vehicleList.add(new Boeing737("Pratt & Whitney JT8D", rand.nextInt(150, 300), "Singapore Airlines", "737-MAX10", rand.nextDouble(100.0, 250.0), rand.nextDouble()));
-		System.out.println("");
 		
 		return vehicleList;
 	}
@@ -118,6 +146,7 @@ public class InheritanceMain {
 	
 	
 	
+	//TODO put in a function class
 	//we can see polymorphism in action here.
 	//I pass a Vehicle object instead of a specific object like Audi, Boeing, or Car or Airplane.
 	//polymorphism refers to a subclass can reference a superclass object
@@ -130,12 +159,129 @@ public class InheritanceMain {
 		vehicle.accelerate(rand.nextDouble(11.0, 50.0));
 		vehicle.brake(rand.nextDouble(5.0, 10.0));
 		vehicle.stop();
+		System.out.println("Warm up done!");
 	}
 	
 	public static void clearScreen() {
 	    System.out.print("\033[H\033[2J");
 	    System.out.flush();
 	}
-
+	
+	//TODO put in a function class
+	public static void specializedPerfTest(Vehicle vehicle) {
+//		3. SPECIALISED PERFORMANCE TEST (Subclass Behaviour)
+	//		if v is Car      -> openTrunk(), playMusic()
+	//		if v is Airplane -> takeOff(), deployLandingGear()
+		//TODO: explain what really happens in line ((Car) vehicle).openTrunk();, specifically the ((Car) vehicle)
+//		Brand-specific:
+//		if v is Audi       -> enableQuattro()
+//		if v is BMW        -> activateSportMode()
+//		if v is Mercedes   -> changeAmbientLighting()
+//		if v is Airbus     -> activateFlyByWire()
+//		if v is Boeing     -> deployFlaps()
+		System.out.println("➤➤ Specialized Performance Test for "+vehicle.getName()+ " starting...");
+		if (vehicle instanceof Car) {
+			((Car) vehicle).openTrunk();
+			((Car) vehicle).playMusic(giveMeRandomMusic());
+			System.out.println("➤➤ Initiating "+((Car) vehicle).getBrand()+ " specific performance test.");
+			if(vehicle instanceof Audi) {
+				((Audi) vehicle).enableQuattroMode();
+			} else if (vehicle instanceof BMW) {
+				((BMW) vehicle).activateSportMode();
+			} else if (vehicle instanceof Mercedes) {
+				((Mercedes) vehicle).changeAmbientLighting(giveMeRandomColor());
+			} else {
+				System.out.println("No "+((Car) vehicle).getBrand()+" specific performance test found.");
+			}
+		} else if (vehicle instanceof Airplane) {
+			//for Airplane, I'll use Airline. I could use getClass and then tri the string to get the class name, but I am lazy.
+			//therefore, we'll use airline instead.
+			((Airplane) vehicle).takeOff();
+			((Airplane) vehicle).deployLandingGear();
+			System.out.println("➤➤ Initiating "+((Airplane) vehicle).getAirline()+ " specific performance test.");
+			if(vehicle instanceof AirbusA320) {
+				((AirbusA320) vehicle).activateFlyByWire();
+			} else if (vehicle instanceof Boeing737) {
+				((Boeing737) vehicle).deployFlaps(); 
+			} else {
+				System.out.println("No "+((Airplane) vehicle).getAirline()+" specific performance test found.");
+			}
+		} else {
+			System.out.println("What kind of Vehicle are you testing?");
+		}
+		System.out.println("➤➤ Specialized Performance Test done!");
+	}
+	
+	//TODO put in a util class
+	public static String giveMeRandomMusic() {
+		Random rand = new Random();
+		List<String> musicPlaylist = new ArrayList<String>();
+		musicPlaylist.add("Revolution by Bastille");
+		musicPlaylist.add("Movie Scene by grentperez");
+		musicPlaylist.add("Poster Boy by 2hollis");
+		musicPlaylist.add("Diet Pepsi  by Addison Rae");
+		musicPlaylist.add("lowkey by Niki");
+		musicPlaylist.add("The Emptiness Machine by Linkin Park");
+		musicPlaylist.add("To The Edge by Masayoshi Soken");
+		musicPlaylist.add("Golden Hour by JVKE");
+		
+		return musicPlaylist.get((rand.nextInt(0, (musicPlaylist.size() - 1))));
+	}
+	
+	//TODO put in a util class
+	public static String giveMeRandomColor() {
+		Random rand = new Random();
+		List<String> colorPalette = new ArrayList<String>();
+		colorPalette.add("Red");
+		colorPalette.add("Orange");
+		colorPalette.add("Yellow");
+		colorPalette.add("Green");
+		colorPalette.add("Blue");
+		colorPalette.add("Indigo");
+		colorPalette.add("Violet");
+		colorPalette.add("Gobbue Green (RARE)");
+		
+		return colorPalette.get((rand.nextInt(0, (colorPalette.size() - 1))));
+	}
+	
+//	4. RANDOM MACHINE CHALLENGE
+//	Vehicle v = fleet.getRandom()
+//	v.start()
+//
+//	(dynamic binding resolves actual subclass at runtime)
+//	v executes subclass behaviour depending on its real type
+	//TODO put in a function class
+	public static void randomMachineChallenge(Vehicle vehicle) {
+		System.out.println("➤➤ Hold up! A random machine challenge for "+vehicle.getName()+" is initialized!");
+		vehicle.start();
+	}
+	
+//	5. EMERGENCY PROTOCOL
+//	Vehicle.stop()
+//
+//	Subclass responses:
+//	Car      -> hazardLights()
+//	Airplane -> retractLandingGear()
+//	BMW      -> disableSportMode()
+//	Boeing   -> retractFlaps()
+	public static void emergencyProtocol(Vehicle vehicle) {
+		System.out.println("➤➤ EMERGENCY PROTOCOL for "+vehicle.getName()+" is initialized!");
+		vehicle.stop();
+		if(vehicle instanceof Car) {
+			if(vehicle instanceof Audi) {
+				((Audi) vehicle).enableQuattroMode();
+			} else if (vehicle instanceof BMW) {
+				((BMW) vehicle).activateSportMode();
+			} else if (vehicle instanceof Mercedes) {
+				((Mercedes) vehicle).changeAmbientLighting(giveMeRandomColor());
+			} else {
+				//((Car) vehicle).ha;
+			}
+		} else if(vehicle instanceof Airplane) {
+			
+		} else {
+			System.out.println("Generic emergency Protocol initialized!");
+		}
+	}
 	
 }
