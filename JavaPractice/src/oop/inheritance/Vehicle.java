@@ -1,5 +1,7 @@
 package oop.inheritance;
 
+import java.text.DecimalFormat;
+
 public class Vehicle {
 
 	private double speed;
@@ -7,6 +9,7 @@ public class Vehicle {
 	private double fuelLevel;
 	private double weight;
 	private String name;
+	DecimalFormat df = new DecimalFormat("#.00");
 	
 	public Vehicle() {
 		System.out.println("✇✇ Vehicle constructor executed.");
@@ -65,17 +68,17 @@ public class Vehicle {
 	
 	public void accelerate(double amount) {
         speed += amount;
-        System.out.println("✇✇ Accelerating by " + amount + " km/h. Current speed: " + speed);
+        System.out.println("✇✇ Accelerating by " + df.format(amount) + " km/h. Current speed: " + df.format(amount));
     }
 	
 	public void brake(double amount) {
         speed = Math.max(0, speed - amount);
-        System.out.println("✇✇ Braking by " + amount + " km/h. Current speed: " + speed);
+        System.out.println("✇✇ Braking by " + df.format(amount) + " km/h. Current speed: " + df.format(amount));
     }
 	
 	public void refuel(double liters) {
         fuelLevel += liters;
-        System.out.println("✇✇ Refueled " + liters + " liters. Current fuel: " + fuelLevel);
+        System.out.println("✇✇ Refueled " + df.format(liters) + " liters. Current fuel: " + df.format(liters));
     }
 	
 }
