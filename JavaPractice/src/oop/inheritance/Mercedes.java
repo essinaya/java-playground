@@ -48,4 +48,8 @@ public class Mercedes extends Car {
             System.out.println("This model does not support AutoPilot.");
         }
     }
+    public String start() {
+		return "Mercedes is starting!";
+    	
+    }
 }

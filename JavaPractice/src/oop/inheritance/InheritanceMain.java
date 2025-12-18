@@ -10,7 +10,10 @@ public class InheritanceMain {
 	
 
 	public static void main(String[] args) throws Exception {
-		Vehicle vc = new Vehicle();
+		//we create a reference. not an Object (the new keyword)
+		//it will be dangerous if the superclass was an abstract (meaning you can't use the new keyword)
+		//anatomy: Vehicle (reference type) audi (ref variable) = new Audi() (obj instance)
+		Vehicle vc;
 		Random rand = new Random();
 		
 		introduction();
@@ -28,42 +31,9 @@ public class InheritanceMain {
 		System.out.println("You chose "+vc.getName());
 		warmUp(vc);
 		specializedPerfTest(vc);
-		if(rand.nextBoolean()) {
+		//if(rand.nextBoolean()) {
 			randomMachineChallenge(vc);
-		}
-		
-		
-		
-		//TODO
-//		3. SPECIALISED PERFORMANCE TEST (Subclass Behaviour)
-//		if v is Car      -> openTrunk(), playMusic()
-//		if v is Airplane -> takeOff(), deployLandingGear()
-//
-//		Brand-specific:
-//		if v is Audi       -> enableQuattro()
-//		if v is BMW        -> activateSportMode()
-//		if v is Mercedes   -> changeAmbientLighting()
-//		if v is Airbus     -> activateFlyByWire()
-//		if v is Boeing     -> deployFlaps()
-//
-//		TODO
-		//Be specific on the random machine challenge
-//		4. RANDOM MACHINE CHALLENGE
-//		Vehicle v = fleet.getRandom()
-//		v.start()
-//
-//		(dynamic binding resolves actual subclass at runtime)
-//		v executes subclass behaviour depending on its real type
-//
-//
-//		5. EMERGENCY PROTOCOL
-//		Vehicle.stop()
-//
-//		Subclass responses:
-//		Car      -> hazardLights()
-//		Airplane -> retractLandingGear()
-//		BMW      -> disableSportMode()
-//		Boeing   -> retractFlaps()
+		//}
 		
 		sc.close();
 	}
@@ -109,6 +79,7 @@ public class InheritanceMain {
 			i++;
 		}
 	}
+
 	
 	public static Vehicle listVehiclesAndReturnVehicle(List<Vehicle> vehicleList, int testingGrounds) {
 		int i = 0;
@@ -169,19 +140,15 @@ public class InheritanceMain {
 	
 	//TODO put in a function class
 	public static void specializedPerfTest(Vehicle vehicle) {
-//		3. SPECIALISED PERFORMANCE TEST (Subclass Behaviour)
-	//		if v is Car      -> openTrunk(), playMusic()
-	//		if v is Airplane -> takeOff(), deployLandingGear()
-		//TODO: explain what really happens in line ((Car) vehicle).openTrunk();, specifically the ((Car) vehicle)
-//		Brand-specific:
-//		if v is Audi       -> enableQuattro()
-//		if v is BMW        -> activateSportMode()
-//		if v is Mercedes   -> changeAmbientLighting()
-//		if v is Airbus     -> activateFlyByWire()
-//		if v is Boeing     -> deployFlaps()
 		System.out.println("➤➤ Specialized Performance Test for "+vehicle.getName()+ " starting...");
 		if (vehicle instanceof Car) {
 			((Car) vehicle).openTrunk();
+			//this is called DOWNCASTING.
+			//it refers to converting a superclass reference to a subclass reference
+			//it is explicit and needs to be handled CAREFULLY (this is why I don't see it often in enterprise softwares)
+			//Utilized to access subclass-specific functionality
+			//Requires type checking to avoid ClassCastExceptio, unlike in upcasting that's usually used in polymporphism
+			//but in upcasting, we can only access superclass methods. in downcasting, we can access specific subclass methods
 			((Car) vehicle).playMusic(giveMeRandomMusic());
 			System.out.println("➤➤ Initiating "+((Car) vehicle).getBrand()+ " specific performance test.");
 			if(vehicle instanceof Audi) {
@@ -243,27 +210,16 @@ public class InheritanceMain {
 		
 		return colorPalette.get((rand.nextInt(0, (colorPalette.size() - 1))));
 	}
-	
-//	4. RANDOM MACHINE CHALLENGE
-//	Vehicle v = fleet.getRandom()
-//	v.start()
-//
 //	(dynamic binding resolves actual subclass at runtime)
 //	v executes subclass behaviour depending on its real type
 	//TODO put in a function class
 	public static void randomMachineChallenge(Vehicle vehicle) {
 		System.out.println("➤➤ Hold up! A random machine challenge for "+vehicle.getName()+" is initialized!");
-		vehicle.start();
+		String startString = vehicle.start();
+		System.out.println(startString);
 	}
 	
-//	5. EMERGENCY PROTOCOL
-//	Vehicle.stop()
-//
-//	Subclass responses:
-//	Car      -> hazardLights()
-//	Airplane -> retractLandingGear()
-//	BMW      -> disableSportMode()
-//	Boeing   -> retractFlaps()
+
 	public static void emergencyProtocol(Vehicle vehicle) {
 		System.out.println("➤➤ EMERGENCY PROTOCOL for "+vehicle.getName()+" is initialized!");
 		vehicle.stop();
@@ -275,9 +231,9 @@ public class InheritanceMain {
 			} else if (vehicle instanceof Mercedes) {
 				((Mercedes) vehicle).changeAmbientLighting(giveMeRandomColor());
 			} else {
-				//((Car) vehicle).ha;
-			}
+				System.out.println("No emergency protocol found for "+vehicle.getName());			}
 		} else if(vehicle instanceof Airplane) {
+			((Airplane) vehicle).retractLandingGear();
 			
 		} else {
 			System.out.println("Generic emergency Protocol initialized!");

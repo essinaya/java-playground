@@ -47,4 +47,9 @@ public class AirbusA320 extends Airplane {
     public void deactivateFlyByWire() {
         System.out.println("Fly-by-wire system deactivated.");
     }
+    
+    public String start() {
+		return "AirbusA320 is starting!";
+    	
+    }
 }

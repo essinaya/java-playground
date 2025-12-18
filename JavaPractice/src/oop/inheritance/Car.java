@@ -57,4 +57,8 @@ public class Car extends Vehicle {
         System.out.println("Now playing: " + track);
     }
 	
+    public String start() {
+		return "Car is starting!";
+    	
+    }
 }

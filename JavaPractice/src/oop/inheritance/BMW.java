@@ -50,4 +50,9 @@ public class BMW extends Car {
             System.out.println("This model does not support adaptive cruise control.");
         }
     }
+    
+    public String start() {
+		return "BMW is starting!";
+    	
+    }
 }

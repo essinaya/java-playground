@@ -42,4 +42,9 @@ public class Boeing737 extends Airplane {
     public void retractFlaps() {
         System.out.println("Flaps retracted for cruise flight.");
     }
+    
+    public String start() {
+		return "Boeing737 is starting!";
+    	
+    }
 }

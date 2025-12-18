@@ -50,4 +50,9 @@ public class Airplane extends Vehicle {
     public void retractLandingGear() {
         System.out.println("Landing gear retracted.");
     }
+    
+    public String start() {
+		return "Airplane is starting!";
+    	
+    }
 }
