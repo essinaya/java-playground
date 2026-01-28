@@ -17,30 +17,30 @@ public class InheritanceMain {
 		Random rand = new Random();
 		
 		introduction();
-		System.out.println("➤➤ Facility Control Scanning available vehicles...");
+		System.out.println("[Main] Facility Control Scanning available vehicles...");
 		List<Vehicle> fleet = new ArrayList<>();
 		fleet = facilityControl(fleet);
 		System.out.println("");
 		//System.out.println("➤➤ Done! Please see selection of our available vehicles: ");
 		//listVehicles(fleet);
-		System.out.println("➤➤ Please choose where you want to test: [1] Road | [2] Tarmac");
+		System.out.println("[Main] Please choose where you want to test: [1] Road | [2] Tarmac");
 		int testingGrounds = sc.nextInt();
 		clearScreen();
 		
 		vc = listVehiclesAndReturnVehicle(fleet, testingGrounds);
-		System.out.println("You chose "+vc.getName());
+		System.out.println("[Main] You chose "+vc.getName());
 		warmUp(vc);
 		specializedPerfTest(vc);
 		//if(rand.nextBoolean()) {
-			randomMachineChallenge(vc);
+			//randomMachineChallenge(vc);
 		//}
 		
 		sc.close();
 	}
 	
 	public static void introduction() {
-		System.out.println("➤➤ Welcome to Essi's Garage!");
-		System.out.println("➤➤ Your one-stop shop for testing vehicles!");
+		System.out.println("[Main] Welcome to Essi's Garage!");
+		System.out.println("[Main] Your one-stop shop for testing vehicles!");
 	}
 	
 	//TODO put in a util class
@@ -49,11 +49,12 @@ public class InheritanceMain {
 		//every subclass IS-A Vehicle
 		//here, we demonstrate Polymorphism as well! :D
 		Random rand = new Random();
-		vehicleList.add(new Audi(true, false, "Audi R8", rand.nextDouble(2.5, 5.0), "Audi", 2));
-		vehicleList.add(new BMW(true, false, "2025 BMW X4", rand.nextDouble(2.5, 5.0), "BMW", 2));
-		vehicleList.add(new Mercedes(rand.nextDouble(2.5, 5.0), "Mercedes", 4, "Green", true, "E 200 AMG Line"));
-		vehicleList.add(new AirbusA320(true, rand.nextDouble(100.0, 200.0), "Philippine Airlines", "A321XLR", rand.nextDouble(),rand.nextInt()));
+		vehicleList.add(new Audi(rand.nextBoolean(), rand.nextBoolean(), "Audi R8", rand.nextDouble(2.5, 5.0), "Audi", 2));
+		vehicleList.add(new BMW(rand.nextBoolean(), rand.nextBoolean(), "2025 BMW X4", rand.nextDouble(2.5, 5.0), "BMW", 2));
+		vehicleList.add(new Mercedes(rand.nextDouble(2.5, 5.0), "Mercedes", 4, "Green", rand.nextBoolean(), "E 200 AMG Line"));
+		vehicleList.add(new AirbusA320(rand.nextBoolean(), rand.nextDouble(100.0, 200.0), "Philippine Airlines", "A321XLR", rand.nextDouble(),rand.nextInt()));
 		vehicleList.add(new Boeing737("Pratt & Whitney JT8D", rand.nextInt(150, 300), "Singapore Airlines", "737-MAX10", rand.nextDouble(100.0, 250.0), rand.nextDouble()));
+		vehicleList.add(new Cessna("Cessna 172 Skyhawk", "Private"));
 		
 		return vehicleList;
 	}
@@ -75,7 +76,7 @@ public class InheritanceMain {
 			} else {
 				type = "Generic Vehicle";
 			}
-			System.out.println("➤➤ "+"["+i+"]"+ vehicle.getName()+" ("+type+")");
+			System.out.println("[Main] "+"["+i+"]"+ vehicle.getName()+" ("+type+")");
 			i++;
 		}
 	}
@@ -85,7 +86,7 @@ public class InheritanceMain {
 		int i = 0;
 		String type = "";
 		Vehicle vc = new Vehicle();
-		System.out.println("➤➤ Please choose from the following available vehicles: ");
+		System.out.println("[Main] Please choose from the following available vehicles: ");
 		for (Vehicle vehicle : vehicleList) {
 			if(vehicle instanceof Car && testingGrounds == 1) {
 				if(vehicle instanceof Audi) {
@@ -97,7 +98,7 @@ public class InheritanceMain {
 				} else {
 					type = "Car";
 				}
-				System.out.println("➤➤ "+"["+i+"]"+ vehicle.getName()+" ("+type+")");
+				System.out.println("[Main] "+"["+i+"]"+ vehicle.getName()+" ("+type+")");
 			} else if(vehicle instanceof Airplane && testingGrounds == 2) {
 				if(vehicle instanceof AirbusA320) {
 					type = "Airbus";
@@ -106,7 +107,7 @@ public class InheritanceMain {
 				} else {
 					type = "Airplane";
 				}
-				System.out.println("➤➤ "+"["+i+"]"+ vehicle.getName()+" ("+type+")");
+				System.out.println("[Main] "+"["+i+"]"+ vehicle.getName()+" ("+type+")");
 			}
 			i++;
 		}
@@ -125,22 +126,25 @@ public class InheritanceMain {
 	//more efficient and cleaner code!
 	public static void warmUp(Vehicle vehicle) {
 		Random rand = new Random();
-		System.out.println("Warming up "+vehicle.getName()+"...");
-		vehicle.start();
+		System.out.println("[Main] Warming up "+vehicle.getName()+"...");
+		System.out.println("[Main] Starting "+vehicle.getName()+"!");
+		System.out.println(vehicle.start());
+		System.out.println("[Main] Accelerating "+vehicle.getName()+"!");
 		vehicle.accelerate(rand.nextDouble(11.0, 50.0));
+		System.out.println("[Main] Braking "+vehicle.getName()+"!");
 		vehicle.brake(rand.nextDouble(5.0, 10.0));
-		vehicle.stop();
+		System.out.println("[Main] Stopping "+vehicle.getName()+"!");
+		System.out.println(vehicle.stop());
 		System.out.println("Warm up done!");
 	}
 	
 	public static void clearScreen() {
-	    System.out.print("\033[H\033[2J");
-	    System.out.flush();
+	    System.out.println("==================================================================");
 	}
 	
 	//TODO put in a function class
 	public static void specializedPerfTest(Vehicle vehicle) {
-		System.out.println("➤➤ Specialized Performance Test for "+vehicle.getName()+ " starting...");
+		System.out.println("[Main] Specialized Performance Test for "+vehicle.getName()+ " starting...");
 		if (vehicle instanceof Car) {
 			((Car) vehicle).openTrunk();
 			//this is called DOWNCASTING.
@@ -150,7 +154,7 @@ public class InheritanceMain {
 			//Requires type checking to avoid ClassCastExceptio, unlike in upcasting that's usually used in polymporphism
 			//but in upcasting, we can only access superclass methods. in downcasting, we can access specific subclass methods
 			((Car) vehicle).playMusic(giveMeRandomMusic());
-			System.out.println("➤➤ Initiating "+((Car) vehicle).getBrand()+ " specific performance test.");
+			System.out.println("[Main] Initiating "+((Car) vehicle).getBrand()+ " specific performance test.");
 			if(vehicle instanceof Audi) {
 				((Audi) vehicle).enableQuattroMode();
 			} else if (vehicle instanceof BMW) {
@@ -158,25 +162,25 @@ public class InheritanceMain {
 			} else if (vehicle instanceof Mercedes) {
 				((Mercedes) vehicle).changeAmbientLighting(giveMeRandomColor());
 			} else {
-				System.out.println("No "+((Car) vehicle).getBrand()+" specific performance test found.");
+				System.out.println("[Main] No "+((Car) vehicle).getBrand()+" specific performance test found.");
 			}
 		} else if (vehicle instanceof Airplane) {
 			//for Airplane, I'll use Airline. I could use getClass and then tri the string to get the class name, but I am lazy.
 			//therefore, we'll use airline instead.
 			((Airplane) vehicle).takeOff();
 			((Airplane) vehicle).deployLandingGear();
-			System.out.println("➤➤ Initiating "+((Airplane) vehicle).getAirline()+ " specific performance test.");
+			System.out.println("[Main] Initiating "+((Airplane) vehicle).getAirline()+ " specific performance test.");
 			if(vehicle instanceof AirbusA320) {
 				((AirbusA320) vehicle).activateFlyByWire();
 			} else if (vehicle instanceof Boeing737) {
 				((Boeing737) vehicle).deployFlaps(); 
 			} else {
-				System.out.println("No "+((Airplane) vehicle).getAirline()+" specific performance test found.");
+				System.out.println("[Main] No "+((Airplane) vehicle).getAirline()+" specific performance test found.");
 			}
 		} else {
-			System.out.println("What kind of Vehicle are you testing?");
+			System.out.println("[Main] What kind of Vehicle are you testing?");
 		}
-		System.out.println("➤➤ Specialized Performance Test done!");
+		System.out.println("[Main] Specialized Performance Test done!");
 	}
 	
 	//TODO put in a util class
@@ -214,14 +218,14 @@ public class InheritanceMain {
 //	v executes subclass behaviour depending on its real type
 	//TODO put in a function class
 	public static void randomMachineChallenge(Vehicle vehicle) {
-		System.out.println("➤➤ Hold up! A random machine challenge for "+vehicle.getName()+" is initialized!");
+		System.out.println("[Main] Hold up! A random machine challenge for "+vehicle.getName()+" is initialized!");
 		String startString = vehicle.start();
 		System.out.println(startString);
 	}
 	
 
 	public static void emergencyProtocol(Vehicle vehicle) {
-		System.out.println("➤➤ EMERGENCY PROTOCOL for "+vehicle.getName()+" is initialized!");
+		System.out.println("[Main] EMERGENCY PROTOCOL for "+vehicle.getName()+" is initialized!");
 		vehicle.stop();
 		if(vehicle instanceof Car) {
 			if(vehicle instanceof Audi) {
@@ -231,12 +235,12 @@ public class InheritanceMain {
 			} else if (vehicle instanceof Mercedes) {
 				((Mercedes) vehicle).changeAmbientLighting(giveMeRandomColor());
 			} else {
-				System.out.println("No emergency protocol found for "+vehicle.getName());			}
+				System.out.println("[Main] No emergency protocol found for "+vehicle.getName());			}
 		} else if(vehicle instanceof Airplane) {
 			((Airplane) vehicle).retractLandingGear();
 			
 		} else {
-			System.out.println("Generic emergency Protocol initialized!");
+			System.out.println("[Main] Generic emergency Protocol initialized!");
 		}
 	}
 	

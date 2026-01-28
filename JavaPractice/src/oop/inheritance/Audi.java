@@ -6,18 +6,18 @@ public class Audi extends Car {
 	
 	
 	public Audi() {
-		System.out.println("⠀⃝ ⠀⃝ ⠀⃝ ⠀⃝ㅤ Audi constructor executed.");
+		System.out.println("[Audi] Audi constructor executed.");
 	}
 	
 	public Audi(boolean hvc, boolean qs) {
-		System.out.println("⠀⃝ ⠀⃝ ⠀⃝ ⠀⃝ㅤ Audi constructor 2 with params executed.");
+		System.out.println("[Audi] Audi constructor 2 with params executed.");
 		this.hasVirtualCockpit = hvc;
 		this.quattroSystem = qs;
 	}
 	
 	public Audi(boolean hvc, boolean qs, String name,
 				double trunkSize, String brand, int numOfDoors) throws Exception {
-		System.out.println("⠀⃝ ⠀⃝ ⠀⃝ ⠀⃝ㅤ Audi constructor 3 with params executed.");
+		System.out.println("[Audi] Audi constructor 3 with params executed.");
 		this.hasVirtualCockpit = hvc;
 		this.quattroSystem = qs;
 		this.setName(name);
@@ -45,22 +45,22 @@ public class Audi extends Car {
 
 	public void enableQuattroMode() {
         if (quattroSystem) {
-            System.out.println("Quattro all-wheel drive activated.");
+            System.out.println("[Audi] Quattro all-wheel drive activated.");
         } else {
-            System.out.println("This Audi model does not support Quattro.");
+            System.out.println("[Audi] This Audi model does not support Quattro.");
         }
     }
 	
 	public void activateVirtualCockpit() {
         if (hasVirtualCockpit) {
-            System.out.println("Virtual cockpit activated.");
+            System.out.println("[Audi] Virtual cockpit activated.");
         } else {
-            System.out.println("This Audi model does not have a virtual cockpit.");
+            System.out.println("[Audi] This Audi model does not have a virtual cockpit.");
         }
     }
 	
 	public String start() {
-		return "Audi is starting!";
+		return "[Audi] Audi is starting!";
     	
     }
 }

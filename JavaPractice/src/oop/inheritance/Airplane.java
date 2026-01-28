@@ -6,7 +6,14 @@ public class Airplane extends Vehicle {
     private String airline;
     
     public Airplane() {
-    	System.out.print("✈✈ Constructor of Airplane loaded.");
+    	System.out.print("[Airplane] Constructor of Airplane loaded.");
+    }
+    
+    public Airplane(String name, String airline, double wingspan) throws Exception {
+    	if(wingspan < 30) {
+    		throw new Exception("[Airplane] Wingspan should be more than 30!");
+    	}
+    	System.out.print("[Airplane] The name of this aircraft is: "+name+ " with airline: "+airline+" wingspan of: "+wingspan);
     }
 
     public double getWingspan() {
@@ -35,24 +42,28 @@ public class Airplane extends Vehicle {
 
 	public void takeOff() {
         altitude = 1000;
-        System.out.println("Airplane taking off. Altitude: " + altitude + " meters.");
+        System.out.println("[Airplane] Airplane taking off. Altitude: " + altitude + " meters.");
     }
 
     public void land() {
         altitude = 0;
-        System.out.println("Airplane has landed.");
+        System.out.println("[Airplane] Airplane has landed.");
     }
 
     public void deployLandingGear() {
-        System.out.println("Landing gear deployed.");
+        System.out.println("[Airplane] Landing gear deployed.");
     }
 
     public void retractLandingGear() {
-        System.out.println("Landing gear retracted.");
+        System.out.println("[Airplane] Landing gear retracted.");
     }
     
     public String start() {
-		return "Airplane is starting!";
+		return "[Airplane] Airplane is starting!";
     	
     }
+    
+    public String stop() {
+		return "[Airplane] Vehicle is stopping!";
+	}
 }

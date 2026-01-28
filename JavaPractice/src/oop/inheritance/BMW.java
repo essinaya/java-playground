@@ -7,12 +7,12 @@ public class BMW extends Car {
     
     
     public BMW() {
-    	System.out.print("☢☢ BMW constructor executed");
+    	System.out.print("[BMW] BMW constructor executed");
     }
     
     public BMW(boolean acc, boolean sm, String name,
     		   double trunkSize, String brand, int numOfDoors) throws Exception {
-    	System.out.print("☢☢ BMW constructor with parameters executed");
+    	System.out.print("[BMW] BMW constructor with parameters executed");
     	this.adaptiveCruiseControl = acc;
     	this.sportMode = sm;
     	this.setName(name);
@@ -40,19 +40,19 @@ public class BMW extends Car {
 
 	public void activateSportMode() {
         sportMode = true;
-        System.out.println("Sport mode activated. Enjoy sharper handling!");
+        System.out.println("[BMW] Sport mode activated. Enjoy sharper handling!");
     }
 
     public void enableAdaptiveCruise() {
         if (adaptiveCruiseControl) {
-            System.out.println("Adaptive cruise control enabled.");
+            System.out.println("[BMW] Adaptive cruise control enabled.");
         } else {
-            System.out.println("This model does not support adaptive cruise control.");
+            System.out.println("[BMW] This model does not support adaptive cruise control.");
         }
     }
     
     public String start() {
-		return "BMW is starting!";
+		return "[BMW] BMW is starting!";
     	
     }
 }

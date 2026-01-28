@@ -12,11 +12,11 @@ public class Vehicle {
 	DecimalFormat df = new DecimalFormat("#.00");
 	
 	public Vehicle() {
-		System.out.println("✇✇ Vehicle constructor executed.");
+		System.out.println("[Vehicle] Vehicle constructor executed.");
 	}
 	
 	public Vehicle(double speed, int capacity, double fuelLevel, double weight) {
-		System.out.println("✇✇ Vehicle constructor with params executed.");
+		System.out.println("[Vehicle] Vehicle constructor with params executed.");
 		this.speed = speed;
 		this.capacity = capacity;
 		this.fuelLevel = fuelLevel;
@@ -58,27 +58,27 @@ public class Vehicle {
 	}
 
 	public String start() {
-		return "✇✇ Vehicle is starting!";
+		return "[Vehicle] Vehicle is starting!";
 	}
 	
 	public String stop() {
 		speed = 0;
-		return "✇✇ Vehicle is stopping!";
+		return "[Vehicle] Vehicle is stopping!";
 	}
 	
 	public void accelerate(double amount) {
         speed += amount;
-        System.out.println("✇✇ Accelerating by " + df.format(amount) + " km/h. Current speed: " + df.format(amount));
+        System.out.println("[Vehicle] Accelerating by " + df.format(amount) + " km/h. Current speed: " + df.format(amount));
     }
 	
 	public void brake(double amount) {
         speed = Math.max(0, speed - amount);
-        System.out.println("✇✇ Braking by " + df.format(amount) + " km/h. Current speed: " + df.format(speed));
+        System.out.println("[Vehicle] Braking by " + df.format(amount) + " km/h. Current speed: " + df.format(speed));
     }
 	
 	public void refuel(double liters) {
         fuelLevel += liters;
-        System.out.println("✇✇ Refueled " + df.format(liters) + " liters. Current fuel: " + df.format(liters));
+        System.out.println("[Vehicle] Refueled " + df.format(liters) + " liters. Current fuel: " + df.format(liters));
     }
 	
 	

@@ -7,11 +7,11 @@ public class Car extends Vehicle {
     private int numberOfDoors;
     
     public Car() {
-    	System.out.println("⛍⛍ Car constructor executed.");
+    	System.out.println("[Car] Car constructor executed.");
     }
     
     public Car(double trunkSize, String brand, int numberOfDoors) {
-    	System.out.println("⛍⛍ Car constructor with parameters executed.");
+    	System.out.println("[Car] Car constructor with parameters executed.");
     	this.trunkSize = trunkSize;
     	this.brand = brand;
     	this.numberOfDoors = numberOfDoors;
@@ -38,27 +38,32 @@ public class Car extends Vehicle {
 	}
 
 	public void setNumberOfDoors(int numberOfDoors) throws Exception {
-		System.out.println("⛍⛍ Car setNumberOfDoors executed.");
+		System.out.println("[Car] Car setNumberOfDoors executed.");
 		if (numberOfDoors < 2) {
-			throw new Exception("Number of doors must be alteast 2");
+			throw new Exception("[Car] Number of doors must be alteast 2");
 		}
 		this.numberOfDoors = numberOfDoors;
 	}
 
 	public void openTrunk() {
-        System.out.println("Trunk opened. Capacity: " + trunkSize + " liters.");
+        System.out.println("[Car] Trunk opened. Capacity: " + trunkSize + " liters.");
     }
 
     public void closeTrunk() {
-        System.out.println("Trunk closed.");
+        System.out.println("[Car] Trunk closed.");
     }
 
     public void playMusic(String track) {
-        System.out.println("Now playing: " + track);
+        System.out.println("[Car] Now playing: " + track);
     }
 	
     public String start() {
-		return "Car is starting!";
+		return "[Car] Car is starting!";
     	
     }
+    
+    public String stop() {
+		return "[Car] Vehicle is stopping!";
+	}
+
 }

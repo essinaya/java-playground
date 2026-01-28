@@ -5,12 +5,12 @@ public class Mercedes extends Car {
     private boolean autoPilotEnabled;
     
     public Mercedes() {
-    	System.out.println("㉦㉦ Mercedes constructor executed.");
+    	System.out.println("[Mercedes] Mercedes constructor executed.");
     }
     
     public Mercedes(double trunkSize, String brand, int numOfDoors,
     				String alc, boolean ape, String name) throws Exception {
-    	System.out.println("㉦㉦ Mercedes constructor with params executed.");
+    	System.out.println("[Mercedes] Mercedes constructor with params executed.");
     	this.setTrunkSize(trunkSize);
     	this.setBrand(brand);
     	this.setNumberOfDoors(numOfDoors);
@@ -38,18 +38,18 @@ public class Mercedes extends Car {
 
 	public void changeAmbientLighting(String color) {
         ambientLightingColor = color;
-        System.out.println("Ambient lighting changed to " + color);
+        System.out.println("[Mercedes] Ambient lighting changed to " + color);
     }
 
     public void enableAutoPilot() {
         if (autoPilotEnabled) {
-            System.out.println("AutoPilot engaged. Sit back and relax.");
+            System.out.println("[Mercedes] AutoPilot engaged. Sit back and relax.");
         } else {
-            System.out.println("This model does not support AutoPilot.");
+            System.out.println("[Mercedes] This model does not support AutoPilot.");
         }
     }
     public String start() {
-		return "Mercedes is starting!";
+		return "[Mercedes] Mercedes is starting!";
     	
     }
 }
