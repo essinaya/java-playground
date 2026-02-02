@@ -125,6 +125,12 @@ public class InheritanceMain {
 	//which means, I can pass any subclass object here as long as it's a superclass of the Vehicle.
 	//more efficient and cleaner code!
 	public static void warmUp(Vehicle vehicle) {
+		if(vehicle instanceof Boeing737) {
+			System.out.println("[1] announcements only | [2] announcements with passenger count");
+			int boeingChoice = sc.nextInt();
+			sc.nextLine();
+			boeingAnnouncement(boeingChoice);
+		}
 		Random rand = new Random();
 		System.out.println("[Main] Warming up "+vehicle.getName()+"...");
 		System.out.println("[Main] Starting "+vehicle.getName()+"!");
@@ -135,6 +141,8 @@ public class InheritanceMain {
 		vehicle.brake(rand.nextDouble(5.0, 10.0));
 		System.out.println("[Main] Stopping "+vehicle.getName()+"!");
 		System.out.println(vehicle.stop());
+		
+		
 		System.out.println("Warm up done!");
 	}
 	
@@ -241,6 +249,22 @@ public class InheritanceMain {
 			
 		} else {
 			System.out.println("[Main] Generic emergency Protocol initialized!");
+		}
+	}
+	
+	public static void boeingAnnouncement(int choice) {
+		Boeing737 boeing = new Boeing737();
+		if(choice == 1) {
+			System.out.print("Enter your message: ");
+			String msg = sc.nextLine();
+			boeing.announceCabinStatus(msg);
+			
+		} else {
+			System.out.print("Enter your message: ");
+			String msg = sc.nextLine();
+			System.out.println("How many passengers?: ");
+			int numOfPsngers = sc.nextInt();
+			boeing.announceCabinStatus(msg, numOfPsngers);
 		}
 	}
 	

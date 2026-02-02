@@ -47,4 +47,12 @@ public class Boeing737 extends Airplane {
 		return "[Boeing737] Boeing737 is starting!";
     	
     }
+    
+    public void announceCabinStatus(String announcement) {
+    	System.out.println("[Boeing 737] Broadcasting announcement: "+ announcement);
+    }
+    
+    public void announceCabinStatus(String announcement, int numberOfPassengers) {
+    	System.out.println("[Boeing 737] Broadcasting announcement: "+ announcement+" with "+numberOfPassengers+" passengers.");
+    }
 }
